@@ -1,7 +1,13 @@
 <header>
-  <nav class="">
-    <a href="#">
-      <img src="{{ 'logo.png' | assset_url }}" alt="Logo" />
+  <nav class="navbar">
+    <a href="/">
+      <img src="{{ 'logo.png' | asset_url }}" alt="DanielewenFinance." />
     </a>
+    <div>
+      <form action="/search">
+        <input type="search" name="q" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
   </nav>
 </header>
