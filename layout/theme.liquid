@@ -1,8 +1,11 @@
 <html>
   <header>
     {{ content_for_header }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
   </header>
-  <body>
+  <body class="body-bg">
+    {% render 'header'%}
     {{ content_for_layout }}
+    {{ 'scripts.js' | asset_url | script_tag }}
   </body>
 </html>
