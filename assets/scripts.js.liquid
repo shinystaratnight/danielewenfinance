@@ -1,0 +1,7 @@
+function classToggle() {
+  const navs = document.querySelectorAll('.navbar__column');
+  navs.forEach(nav => nav.classList.toggle('navbar__column-toggleshow'));
+}
+
+document.querySelector('.navbar__item-toggle')
+  .addEventListener('click', classToggle);

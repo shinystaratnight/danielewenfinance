@@ -1,4 +1,177 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url("{{ 'Poppins-Regular.ttf' | asset_url }}");
+}
+
 body {
   background-color: #000;
-  /* background-image: url("{{ 'logo.png' | asset_url }}"); */
+  font-family: 'Poppins';
+  margin: 0;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.form-search {
+  position: relative;
+  margin: 0;
+}
+
+.input-search {
+  background: transparent;
+  color: rgba(255, 255, 255, .6);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, .6);
+  padding-right: 40px;
+  width: 100%;
+}
+
+.input-search::placeholder {
+  font-style: italic;
+}
+
+.input-search:hover, .input-search:focus {
+  outline: none;
+}
+
+.icon-btn {
+  background: transparent;
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  border: none;
+}
+
+.icon-btn:focus, .icon-btn:hover {
+  outline: none;
+}
+
+.theme-btn {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  text-transform: capitalize;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.theme-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.theme-btn:hover, .theme-btn:focus {
+  outline: none;
+}
+
+.theme-btn:hover path {
+  fill: #000;
+}
+
+.cart__link {
+  color: #fff;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+.cart__link:hover {
+  color: #fff;
+  /* text-decoration: none; */
+}
+
+.navbar__row {
+  display: flex;
+  color: white;
+}
+
+.navbar__item {
+  padding-right: 8px;
+}
+
+.navbar__items {
+  display: flex;
+}
+
+.navbar__item-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__items--right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.navbar__item-toggle {
+  display: none;
+}
+
+.navbar__column {
+  margin-top: .5rem;
+}
+
+.navbar__column-toggleshow {
+  display: none;
+}
+
+.navbar__item-fluid {
+  color: rgba(255, 255, 255, .6);
+  text-transform: capitalize;
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  cursor: pointer;
+}
+
+.navbar__item-fluid:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* @media only screen and (max-width: 768px) { */
+@media only screen and (max-width: 992px) {
+  .navbar__items
+  {
+    flex-direction: column;
+  }
+  
+  .navbar__item-brand {
+    display: none;
+  }
+
+  .navbar__items--right {
+    margin-left: 0;
+    width: 100%;
+  }
+  .navbar__items {
+    display: none;
+  }
+  
+  .navbar__item-toggleshow {
+    display: none;
+  }
+
+  .navbar__item-search {
+    flex: 1;
+  }
+
+  .navbar__item-toggle {
+    display: initial;
+    cursor: pointer;
+  }
+
+  .navbar__item-search {
+    flex: 1;
+  }
+
+  .cart-count {
+    vertical-align: middle;
+    display: none;
+  }
 }

@@ -1,0 +1,25 @@
+{% form 'cart', cart %}
+  <p>Product</p>
+  {% for item in cart.items %}
+    <div>
+      <img src="{{ item.image | image_url: width: 200 }}" />
+      <h2>{{ item.title }}</h2>
+      <h2>{{ item.price | money }}</h2>
+      <h2>{{ item.quantity }}</h2>
+      <h2>{{ item.final_line_price | money }}</h2>
+    </div>
+  {% endfor %}
+
+  <p>Subtotal</p>
+  <p>{{ cart.items_subtotal_price | money }}</p>
+
+  <button type="submit" name="Refresh Cart" class="btn btn--loader" data-cart-submit>
+    Refresh
+  </button>
+
+  <a href="/" title="Continue shopping">Continue shopping</a>
+  <button type="submit" name="checkout">
+    Checkout
+  </button>
+
+{% endform %}
