@@ -1,0 +1,25 @@
+<div class="featured_product">
+  {% if product.tags contains 'bestseller' %}
+    {% render 'best-seller' %}
+  {% endif %}
+
+  <a href="{{ product.url }}">
+    <img src="{{ product.featured_image | image_url }}" width="100%" />
+  </a>
+  <div class="featured_product__title">
+    {{ product.title }}
+    <span class="product_name-prefix">PDF V3</span>
+  </div>
+  <div class="featured_product-prices">
+    <span class="featured_product__price">{{ product.price | money }}</span>
+    <span class="featured_product__compare_price">{{ product.compare_at_price | money }}</span>
+  </div>
+
+  <div class="add_to_cart--button">
+    {% render 'icon-shopping-bag' %}
+  </div>
+
+  <p class="add_to_cart--label">
+    Add to cart
+  </p>
+</div>

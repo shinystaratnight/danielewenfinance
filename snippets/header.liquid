@@ -33,7 +33,7 @@
           {% render 'icon-right-arrow' %}
         </button>
       </div>
-      <div class="navbar__item">
+      <div class="navbar__item navbar__item-cart">
         <a href="/cart" class="cart__link">
           {% render 'icon-shopping-bag' %}
           <span class="cart-count">Cart &#40;{{cart.item_count}}&#41;</span>
@@ -49,5 +49,11 @@
     <div class="navbar__item-fluid">
       Sign up
     </div>
+  </div>
+
+  <div class="brand-mobile">
+    <a href="/">
+      <img src="{{ 'logo.png' | asset_url }}" alt="DanielewenFinance." />
+    </a>
   </div>
 </div>

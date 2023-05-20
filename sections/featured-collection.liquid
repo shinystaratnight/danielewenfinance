@@ -1,0 +1,12 @@
+<div class="collections">
+  {% for collection in collections %}
+    <p class="collection__title">{{ collection.title }}</p>
+    <div class="row">
+      {% for product in collection.products %}
+        <div class="col-lg-4 card_product">
+          {% render 'card-product', product: product %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
