@@ -15,11 +15,33 @@
     <span class="featured_product__compare_price">{{ product.compare_at_price | money }}</span>
   </div>
 
-  <div class="add_to_cart--button">
+  <div class="add_to_cart--button" onclick="addToCart({{ product.variants.first.id }})">
     {% render 'icon-shopping-bag' %}
   </div>
 
-  <p class="add_to_cart--label">
+  <div class="add_to_cart--label">
     Add to cart
-  </p>
+  </div>
 </div>
+
+<script>
+  function addItem(variantId, quantity) {
+    fetch("/cart/add.json", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            id: variantId,
+            quantity: quantity
+        })
+    }).then(function (result) {
+      location.reload();
+    })
+  }
+
+  function addToCart(variantId) {
+    addItem(variantId, 1);
+  }
+</script>

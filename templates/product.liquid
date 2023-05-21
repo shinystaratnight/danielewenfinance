@@ -1,0 +1,50 @@
+{% assign productname = product.title | append: ' PDF V3' %}
+{% render 'breadcrumb', pagename: productname %}
+
+<div class="product--page">
+  <div class="product--page--upper">
+    <div class="product--page--image">
+      <img src="{{ product.featured_image | image_url }}" width="100%">
+    </div>
+    <div class="product--page--summary">
+      <div class="product--page__title">
+        {{ product.title }}
+        <span class="product--page--name-suffix">PDF V3</span>
+      </div>
+      <div class="product--page-prices">
+        <span class="product--page__price">{{ product.price | money }}</span>
+        <span class="product--page__compare_price">{{ product.compare_at_price | money }}</span>
+      </div>
+      
+      <div class="product--page-taxincluded">Tax Included. Shipping Calculated At Checkout.</div>
+  
+      <div class="product--page--pay-buttons">
+        <div class="product--page--add_to_cart">
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            <input type="hidden" id="quantity" name="quantity" value="1"/>
+            <input type="submit" value="Add to cart" class="pay-button add_to_cart-button" />
+          </form>
+        </div>
+
+        <div class="product--page--gpay">
+          <form method="post" action="/cart/add">
+            <button type="submit" class="pay-button gpay-button">
+              <span>Buy with</span>
+              {% render 'icon-google' %}
+              <span>Pay</span>
+            </button>
+          </form>
+        </div>
+      </div>
+  
+      <a href="#" class="product--page--more-options">More Payment Options</a>
+    </div>
+  </div>
+
+  <div class="product--page--lower">
+    <div class="product--page__description-label">Description</div>
+    <div class="product--page__description">{{ product.description }}</div>
+  </div>
+</div>
+

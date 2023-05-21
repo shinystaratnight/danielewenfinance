@@ -1,3 +1,5 @@
+{% render 'breadcrumb', pagename: 'Your Shopping Cart' %}
+
 {% form 'cart', cart %}
   <p>Product</p>
   {% for item in cart.items %}

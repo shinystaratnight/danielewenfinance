@@ -286,7 +286,7 @@ textarea:focus, input:focus{
   margin-top: 1.5rem;
 }
 
-.product_name-prefix {
+.product_name-suffix {
   font-weight: 700;
 }
 
@@ -338,4 +338,165 @@ textarea:focus, input:focus{
   bottom: -3.5rem;
   transform: translateX(-50%);
   left: 50%;
+}
+
+
+/* Begin Product Page */
+.product--page {
+  width: 75%;
+}
+
+.product--page--upper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.product--page--image {
+  width: 46%;
+  margin-right: 4%;
+}
+
+.product--page__title {
+  font-size: 1.25rem;
+  font-weight: 300;
+  /* margin-bottom: .1rem; */
+  color: #fff;
+}
+
+.product--page--name-suffix {
+  font-weight: 700;
+}
+
+.product--page__price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-right: .5rem;
+}
+
+.product--page__compare_price {
+  font-size: .8rem;
+  font-weight: 700;
+  color: #aaa;
+}
+
+.product--page-taxincluded {
+  font-size: .9rem;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.product--page--pay-buttons {
+  display: flex;
+  padding-top: 1rem;
+}
+
+.product--page--pay-buttons .pay-button {
+  font-size: 1rem;
+  color: #fff;
+  background: #000;
+  border: 1px solid #f5f5f5;
+  border-radius: .2rem;
+  padding: .5rem 1rem;
+  margin-right: .5rem;
+}
+
+.product--page--pay-buttons .pay-button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.product--page--more-options {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.product--page--more-options:hover {
+  color: #fff;
+}
+
+.product--page__description-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 3rem 0 1rem;
+}
+
+.product--page__description {
+  font-size: .85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, .8);
+}
+
+@media only screen and (max-width: 992px) {
+  .product--page {
+    width: 100%;
+  }
+
+  .product--page--upper {
+    flex-direction: column;
+  }
+
+  .product--page--image,
+  .product--page--summary {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .product--page--summary {
+    margin-top: 1.5rem;
+  }
+
+  .product--page--pay-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .product--page--pay-buttons .pay-button {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .product--page__title,
+  .product--page-prices,
+  .product--page-taxincluded,
+  .product--page--more-options {
+    text-align: center;
+  }
+}
+
+/* End Product Page */
+
+.bread-crumb {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 0.25rem;
+}
+
+.bread-crumb > li {
+  display: inline-block;
+}
+
+.bread-crumb a {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.bread-crumb--home::after {
+  padding: 0 .3rem;
+  color: #fff;
+  content: ">";
+}
+
+.bread-crumb .bread-crumb--active a {
+  font-size: 1.2rem;
+  color: #fff;
 }
