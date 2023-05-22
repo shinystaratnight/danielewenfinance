@@ -5,71 +5,113 @@
   <div class="cart--product__total cart--product-card_header">Total</div>
 </div>
 
-{% form 'cart', cart %}
-  {% for item in cart.items %}
-    <div class="cart--products cart--product-card">
-      <div class="cart--product__summary">
-        <img src="{{ item.image | image_url }}" />
-        <div>{{ item.title }}</div>
-      </div>
-      <div class="cart--product__price">
-        {{ item.price | money }}
-      </div>
-      <div class="cart--product__quantity">
+{% for item in cart.items %}
+  <div class="cart--products cart--product-card">
+    <div class="cart--product__summary">
+      <img src="{{ item.image | image_url }}" />
+      <div>{{ item.title }}</div>
+    </div>
+    <div class="cart--product__price">
+      {{ item.price | money }}
+    </div>
+    <div class="cart--product__quantity">
+      <div class="cart--decrement">-</div>
+      <div>{{ item.quantity }}</div>
+      <div class="cart--increment">+</div>
+    </div>
+    <div class="cart--product__total">
+      <div>{{ item.final_line_price | money }}</div>
+      <a class="icon-close" href="{{item.url_to_remove}}">{% render 'icon-close' %}</a>
+    </div>
+  </div>
+
+  <div class="cart--products-mobile cart--product--card-mobile">
+    <div class="cart--product--mobile__summary">
+      <img src="{{ item.image | image_url }}" />
+      <div>{{ item.title }}</div>
+    </div>
+    <div class="cart--product--mobile__price">
+      <div>Price</div>
+      <div>{{ item.price | money }}</div>
+    </div>
+    <div class="cart--product--mobile__quantity">
+      <div>Quantity</div>
+      <div class="cart--quantity--buttons">
         <div class="cart--decrement">-</div>
         <div>{{ item.quantity }}</div>
         <div class="cart--increment">+</div>
       </div>
-      <div class="cart--product__total">
-        <div>{{ item.final_line_price | money }}</div>
-        <div class="icon-close">{% render 'icon-close' %}</div>
-      </div>
     </div>
-
-    <div class="cart--products-mobile cart--product--card-mobile">
-      <div class="cart--product--mobile__summary">
-        <img src="{{ item.image | image_url }}" />
-        <div>{{ item.title }}</div>
-      </div>
-      <div class="cart--product--mobile__price">
-        <div>Price</div>
-        <div>{{ item.price | money }}</div>
-      </div>
-      <div class="cart--product--mobile__quantity">
-        <div>Quantity</div>
-        <div class="cart--quantity--buttons">
-          <div class="cart--decrement">-</div>
-          <div>{{ item.quantity }}</div>
-          <div class="cart--increment">+</div>
-        </div>
-      </div>
-      <div class="cart--product--mobile__total">
-        <div>Total</div>
-        <div>{{ item.final_line_price | money }}</div>
-      </div>
+    <div class="cart--product--mobile__total">
+      <div>Total</div>
+      <div>{{ item.final_line_price | money }}</div>
     </div>
-  {% endfor %}
-
-  <div class="cart--subtotal-section">
-    <div class="cart--subtotal-label">Subtotal</div>
-    <div>{{ cart.items_subtotal_price | money }}</div>
   </div>
+{% endfor %}
 
-  <div class="terms--agreement">
-    {%
-      render 'checkbox',
-        name: 'terms',
-        label: 'I have read and agreed with the terms and conditions and the Refund Policy',
-        class: 'cart--terms--agreement'
-    %}
-  </div>
+<div class="cart--subtotal-section">
+  <div class="cart--subtotal-label">Subtotal</div>
+  <div>{{ cart.items_subtotal_price | money }}</div>
+</div>
+
+<div class="terms--agreement">
+  {%
+    render 'checkbox',
+      name: 'terms',
+      label: 'I have read and agreed with the terms and conditions and the Refund Policy',
+      class: 'cart--terms--agreement'
+  %}
+</div>
+
+<div class="cart--buttons">
+  <button type="submit" name="Refresh Cart" class="cart-refresh--button">
+    {% render 'icon-refresh' %}
+  </button>
+
+  <button type="button" class="cart-continue--button">Continue shopping</button>
   
-  <div class="cart--buttons">
-    <button type="submit" name="Refresh Cart" class="cart-refresh--button">
-      {% render 'icon-refresh' %}
-    </button>
-  
-    <button type="button" class="cart-continue--button">Continue shopping</button>
+  <form action="{{ routes.cart_url }}" method="post" id="cart">
     <button type="submit" name="checkout" class="theme-btn cart-checkout--button">Check out</button>
-  </div>
-{% endform %}
+  </form>
+</div>
+
+{% javascript %}
+  function refreshPage() {
+    location.reload();
+  }
+
+  function continueShopping() {
+    location.href = "/";
+  }
+
+  function remove(url)   {
+    // location.href = url;
+    console.log(url);
+  }
+
+  document.querySelector('.cart-refresh--button')
+    .addEventListener('click', refreshPage);
+
+  document.querySelector('.cart-continue--button')
+    .addEventListener('click', continueShopping);
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return msie > 0 || trident > 0;
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function (event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+
+{% endjavascript %}
