@@ -8,7 +8,7 @@
   margin-top: 1rem;
 }
 
-.customer__detail {
+.section__title {
   color: #fff;
   font-weight: 700;
   font-size: 1.2rem;
@@ -43,10 +43,7 @@
 }
 
 .customer__orders_title {
-  font-size: 1.2rem;
-  font-weight: 700;
   text-transform: capitalize;
-  color: #fff;
   padding: 3rem 0 1rem;
 }
 
@@ -55,3 +52,79 @@
   font-size: 1rem;
   font-weight: 300;
 }
+
+
+table.order-history {
+  min-width: 60%;
+}
+
+table.order-history thead th {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 300;
+  padding-bottom: .75rem;
+}
+
+table.order-history tbody td {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 300;
+  padding-top: .75rem;
+}
+
+.card--order {
+  display: none;
+}
+
+@media only screen and (max-width: 992px) {
+  table.order-history {
+    display: none;
+  }
+  
+  .card--order {
+    display: block;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .6);
+  }
+
+  .card--order--data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, .6);
+    padding: .25rem 0;
+  }
+}
+
+
+.edit-address {}
+
+.customer__address {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.customer__address .default__address {
+  color: #707070;
+  margin: 0.5rem 0;
+}
+
+.customer__address__format {
+  line-height: 230%;
+}
+
+.field input[type=text],
+.field input[type=tel] {
+  background-color: transparent;
+  color: rgba(255, 255, 255, .6);
+  margin-bottom: .5rem;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, .6);
+}
+
+@media only screen and (max-width: 992px) {
+  .edit-address {}
+}
+
